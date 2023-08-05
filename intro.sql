@@ -17,10 +17,12 @@ CREATE TABLE users3 (
     age INT DEFAULT 18
     -- PRIMARY KEY(user_id, username)
     -- UNIQUE( username, email)
-)
+);
+
+ALter table users3 rename to users4;
 
 -- ## Insert data into a TABLE
-INSERT INTO users3 values (1, 'john', 'jsohn@gmail.com')
+INSERT INTO users3 values (1, 'john', 'jsohn@gmail.com');
 
 -- select * from users3
 
@@ -41,6 +43,52 @@ INSERT INTO users3 (username, email) values
 
 --Truncate Delete all row in a table WITHOUT the table , DROP delete the table -- interview question
 TRUNCATE TABLE users3;
+
+-- Alter table
+-- add a column , drop a column, change datatype of a column 
+-- rename a column, set default value for a column 
+-- add constrains to a column , drop constrain for a column  
+-- table rename 
+-- alter table table_name (action) - changeable
+
+alter table users3
+add column password VARCHAR(255) DEFAULT 'admin123' not null;
+
+alter table users3
+add column demo int;
+
+-- delete column 
+alter table users3 drop COLUMN age;
+
+-- change datatype of a column
+alter table users3 alter COLUMN demo type text;
+
+--set default value for a column
+alter table users3 alter COLUMN demo2 set default 'bangladesh';
+
+-- remove default value for a column
+alter table users3 alter COLUMN demo2 drop default;
+
+-- rename a column
+alter table users3 rename COLUMN demo to demo2;
+
+-- add constrain to a column
+alter table users3 
+alter column demo2 set not null;
+
+-- drop constrain for a column
+alter table users3 
+alter column demo2 drop not null;
+
+-- already exist a constraint but want to set agian
+alter table users3 ADD CONSTRAINT unique_email UNIQUE (email); 
+
+-- drop constrain
+alter table users3 drop CONSTRAINT unique_email;
+
+INSERT into users3 values (8,'alif8','alif8@gmail.com');
+
+
 
 SELECT * from users3 
 
