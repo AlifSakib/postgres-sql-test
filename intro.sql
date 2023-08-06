@@ -90,5 +90,40 @@ INSERT into users3 values (8,'alif8','alif8@gmail.com');
 
 
 
-SELECT * from users3 
+SELECT * from users3 ;
 
+
+-- Department table
+-- Each depart can have multiple employee
+
+CREATE TABLE Department(
+    deptID SERIAL PRIMARY KEY,
+    deptName VARCHAR(50)
+);
+
+insert into Department values(1, 'IT');
+
+DELETE FROM Department where deptId = 1;
+
+select * from Department;
+
+
+
+-- Employee Table 
+-- Each emloyee belongs to a department
+
+create table Employee(
+    empID SERIAL PRIMARY KEY,
+    empName VARCHAR(50) NOT NULL,
+    departmentID INT,
+    CONSTRAINT fk_constraint_dept
+        FOREIGN KEY (departmentID)
+        REFERENCES Department(deptID)
+);
+
+
+insert into Employee values (1,'alif',1);
+
+DELETE from Employee where empID = 1;
+
+select * from Employee
