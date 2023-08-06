@@ -126,4 +126,45 @@ insert into Employee values (1,'alif',1);
 
 DELETE from Employee where empID = 1;
 
-select * from Employee
+select * from Employee;
+
+create table courses (
+    course_id SERIAL PRIMARY KEY,
+    course_name VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    publish_date DATE
+);
+
+
+-- date - YYYY-MM-DD
+insert into courses(course_name, description,publish_date)
+VALUES
+    ('test', 'test', '2020-07-13'),
+    ('test', 'test', null),
+    ('test', 'test', null);
+
+
+
+-- Update Database table row
+-- UPDATE table_name
+-- SET
+-- column1 - value1
+-- column2 - value2
+-- Where condition
+
+UPDATE courses 
+SET 
+course_name = 'postgres for de',
+description = 'des'
+where course_id > 1 AND course_id < 5;
+
+UPDATE courses 
+SET 
+course_name = 'for de',
+description = null
+where course_id = 1;
+
+select * from courses;
+
+DELETE from courses 
+where course_id = 1
