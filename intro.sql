@@ -96,7 +96,7 @@ SELECT * from users3 ;
 -- Department table
 -- Each depart can have multiple employee
 
-CREATE TABLE Department(
+CREATE TABLE IF NOT EXISTS Department(
     deptID SERIAL PRIMARY KEY,
     deptName VARCHAR(50)
 );
@@ -112,7 +112,7 @@ select * from Department;
 -- Employee Table 
 -- Each emloyee belongs to a department
 
-create table Employee(
+create table IF NOT EXISTS Employee(
     empID SERIAL PRIMARY KEY,
     empName VARCHAR(50) NOT NULL,
     departmentID INT,
@@ -168,3 +168,5 @@ select * from courses;
 
 DELETE from courses 
 where course_id = 1
+
+-- select basics
