@@ -167,6 +167,308 @@ where course_id = 1;
 select * from courses;
 
 DELETE from courses 
-where course_id = 1
+where course_id = 1;
 
 -- select basics
+
+CREATE TABLE IF NOT EXISTS Department(
+    deptID SERIAL PRIMARY KEY,
+    name text NOT NULL
+);
+
+insert into Department(name)
+VALUES
+    ('IT'),
+    ('HR'),
+    ('Sales'),
+    ('Marketing'),
+    ('Finance'),
+    ('Accounting');
+    
+DROP TABLE Department;
+
+
+
+create table IF NOT EXISTS Employee(
+    empID SERIAL PRIMARY KEY,
+    name text NOT NULL,
+    email text not NULL,
+    salary INTEGER not null,
+    joining_date date not null,
+    deptID INTEGER not null,
+    CONSTRAINT fk_deptID
+        FOREIGN KEY (deptID)
+        REFERENCES Department(deptID)
+);
+
+DROP TABLE Employee;
+
+INSERT INTO Employee (
+    name,
+    email,
+    salary,
+    joining_date,
+    deptID
+) VALUES 
+(
+    'Alif',
+    'alif@example.com',
+    10000,
+    '2020-07-13',
+    1
+),
+(
+    'Beth',
+    'beth@example.com',
+    62000,
+    '2019-08-25',
+    2
+),
+(
+    'John',
+    'john@example.com',
+    100000,
+    '2019-07-11',
+    3
+),
+(
+    'Richard',
+    'richard@example.com',
+    100000,
+    '2018-01-01',
+    2
+),
+(
+    'David',
+    'david@example.com',
+    50000,
+    '2020-11-05',
+    4
+),
+(
+    'Eva',
+    'eva@example.com',
+    60000,
+    '2018-06-20',
+    3
+),
+(
+    'Frank',
+    'frank@example.com',
+    45000,
+    '2017-09-15',
+    2
+),
+(
+    'Grace',
+    'grace@example.com',
+    75000,
+    '2022-03-10',
+    5
+),
+(
+    'Henry',
+    'henry@example.com',
+    80000,
+    '2021-11-30',
+    6
+),
+(
+    'Isabel',
+    'isabel@example.com',
+    68000,
+    '2017-12-22',
+    4
+),
+(
+    'Jack',
+    'jack@example.com',
+    56000,
+    '2019-04-08',
+    1
+),
+(
+    'Karen',
+    'karen@example.com',
+    72000,
+    '2020-10-16',
+    3
+),
+(
+    'Liam',
+    'liam@example.com',
+    92000,
+    '2018-05-03',
+    5
+),
+(
+    'Mia',
+    'mia@example.com',
+    57000,
+    '2021-02-27',
+    2
+),
+(
+    'Nathan',
+    'nathan@example.com',
+    85000,
+    '2022-07-19',
+    6
+),
+(
+    'Olivia',
+    'olivia@example.com',
+    67000,
+    '2019-09-09',
+    1
+),
+(
+    'Paul',
+    'paul@example.com',
+    55000,
+    '2020-08-14',
+    4
+),
+(
+    'Quinn',
+    'quinn@example.com',
+    78000,
+    '2018-03-05',
+    3
+),
+(
+    'Rachel',
+    'rachel@example.com',
+    62000,
+    '2022-01-08',
+    2
+),
+(
+    'Samuel',
+    'samuel@example.com',
+    71000,
+    '2017-10-12',
+    5
+),
+(
+    'Taylor',
+    'taylor@example.com',
+    59000,
+    '2021-06-28',
+    6
+),
+(
+    'Uma',
+    'uma@example.com',
+    95000,
+    '2019-11-24',
+    1
+),
+(
+    'Victor',
+    'victor@example.com',
+    83000,
+    '2020-04-17',
+    4
+),
+(
+    'Wendy',
+    'wendy@example.com',
+    64000,
+    '2018-09-02',
+    3
+),
+(
+    'Xavier',
+    'xavier@example.com',
+    89000,
+    '2022-05-21',
+    2
+),
+(
+    'Yara',
+    'yara@example.com',
+    70000,
+    '2017-11-07',
+    5
+),
+(
+    'Zoe',
+    'zoe@example.com',
+    60000,
+    '2021-10-03',
+    6
+);
+
+
+-- SELECT ALL Fileds
+
+SELECT * FROM Department;
+
+SELECT * FROM Employee;
+
+-- SELECT some column
+
+SELECT empID, name, email FROM Employee;
+
+-- FILTERING DATA
+SELECT * from Employee 
+where salary > 70000 and salary < 90000;
+
+-- FILTERING DATA
+SELECT * from Employee 
+where salary > 70000 or salary < 90000;
+
+-- FILTERING DATA
+SELECT * from Employee 
+where salary between 70000 and 90000;
+
+SELECT * from Employee 
+where joining_date >=  '2020-01-01';
+
+-- not equal
+SELECT * from Employee 
+where name <> 'Alif';
+
+SELECT * FROM Employee
+WHERE name LIKE 'A%';
+
+SELECT * FROM Employee
+ORDER BY name 
+ASC LIMIT 10 OFFSET 3;
+
+SELECT * FROM Employee
+ORDER BY salary 
+DESC LIMIT 1 OFFSET 3;
+
+-- IN, NOT IN, BETWEEN , LIMIT, OFFSET, LIKE, NOT LIKE, ORDER BY, GROUP BY, HAVING, DISTINCT, COUNT, SUM, AVG, MIN, MAX, ROUND, CAST, COALESCE, NULLIF, CASE, INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN, SELF JOIN, CROSS JOIN, UNION, UNION ALL, INTERSECT, EXCEPT, EXISTS, ANY, ALL, SOME, IN, NOT IN, EXISTS, NOT EXISTS, INSERT, UPDATE, DELETE, TRUNCATE, CREATE TABLE, DROP TABLE, ALTER TABLE, CREATE INDEX, DROP INDEX, PRIMARY KEY, FOREIGN KEY, CHECK, UNIQUE, DEFAULT, CONSTRAINT, VIEW, SEQUENCE, TRIGGER, STORED PROCEDURE, STORED FUNCTION, BACKUP DATABASE, RESTORE DATABASE, AUTO INCREMENT, IDE
+
+SELECT * from Employee
+WHERE empID IN (1,2,3);
+
+SELECT * FROM employee
+WHERE salary BETWEEN 10000 AND 50000;
+
+-- String Searching
+SELECT * FROM employee
+WHERE name LIKE '%a%';
+SELECT * FROM employee
+WHERE name LIKE '%a';
+SELECT * FROM employee
+WHERE name LIKE 'A%';
+
+-- specific position 
+
+SELECT * FROM employee
+WHERE name LIKE '_a%';
+
+SELECT * FROM employee
+WHERE name LIKE '__a__';
+
+-- first e A ache last e f
+SELECT * FROM employee
+WHERE name LIKE 'A%f';
+
+-- check null
+SELECT * FROM employee
+WHERE name IS NULL;

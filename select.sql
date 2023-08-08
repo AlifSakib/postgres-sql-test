@@ -18,3 +18,4 @@ create table IF NOT EXISTS Employee(
         REFERENCES Department(deptID)
 );
 
+SELECT * FROM Employee
