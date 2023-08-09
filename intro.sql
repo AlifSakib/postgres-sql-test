@@ -469,6 +469,23 @@ WHERE name LIKE '__a__';
 SELECT * FROM employee
 WHERE name LIKE 'A%f';
 
+UPDATE employee
+SET salary = NULL
+WHERE empID = 1;
+
 -- check null
 SELECT * FROM employee
 WHERE name IS NULL;
+
+-- JOINING  
+
+-- joining types : inner join,
+
+-- FOR EACH record in table 1
+-- LOOK for a match in table 2
+
+SELECT * FROM Department;
+
+SELECT e.name, email
+from employee e
+INNER JOIN department ON deptid = deptid
